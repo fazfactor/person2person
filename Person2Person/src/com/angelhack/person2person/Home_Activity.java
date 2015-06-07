@@ -1,19 +1,40 @@
 package com.angelhack.person2person;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.angelhack.person2person.helperclass.NotificationHelper;
+import com.angelhack.person2person.helperclass.Utils;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 
@@ -22,6 +43,19 @@ public class Home_Activity extends  SherlockFragmentActivity {
 	Typeface Roboto_bold,Roboto_light;
 	ImageView Signin_Gmail,
 			  Signup_Facebook;
+	
+	Button download;
+	
+	ProgressDialog dialog;
+	
+	private NotificationHelper mNotificationHelper;
+	NotificationManager mNotifyManager;
+	NotificationCompat.Builder mBuilder;
+	int id = 1;
+	
+	String file_name = "Android Animated Logo";
+	
+	String file_path="/sdcard/" + "Download/"+ "Android Videos" + file_name + ".mp4";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +97,9 @@ public class Home_Activity extends  SherlockFragmentActivity {
 		
 		Signin_Gmail=(ImageView) findViewById(R.id.signin_gmail_iv_id);
 		Signup_Facebook=(ImageView) findViewById(R.id.signup_facebbok_iv_id);
+		download=(Button) findViewById(R.id.readmore_bt_id);
+		
+		mNotificationHelper = new NotificationHelper(Home_Activity.this);
 		
 		
 		Signin_Gmail.setOnClickListener(new OnClickListener() {
@@ -70,8 +107,6 @@ public class Home_Activity extends  SherlockFragmentActivity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				
-				
 				
 			}
 		});
@@ -83,11 +118,251 @@ public class Home_Activity extends  SherlockFragmentActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				
-				Toast.makeText(Home_Activity.this, "Under Construction...!", Toast.LENGTH_SHORT).show();
+			}
+		});
+		
+		download.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				
+				if(Utils.isNetworkAvailable(Home_Activity.this))
+			 	{
+			 		new Getvideo(Home_Activity.this).execute();
+			 	}
 				
 			}
 		});
 	
 	}
 
+public class Getvideo extends AsyncTask<Void, Integer, Void> {
+		
+		
+		private Activity activity;
+
+		public Getvideo(Activity activity) {
+			
+			this.activity = activity;
+
+		}
+
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+			
+			dialog = new ProgressDialog(activity, R.style.StyledDialog);
+	        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+	        dialog.setMessage(" Downloading in Progress, Please Wait....");
+	        dialog.setIndeterminate(true);
+	        dialog.setCanceledOnTouchOutside(false);
+	        dialog.show();
+			
+			
+			
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+
+
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			
+			
+					new ApplicationForm_download(activity).execute();
+				
+		}
+	}
+
+	
+	
+	public class ApplicationForm_download extends AsyncTask<Void, Void, Void> {
+
+		private Activity activity;
+
+		public ApplicationForm_download(Activity activity) {
+			this.activity = activity;
+			
+			
+
+		}
+
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+
+			// Create the notification in the statusbar
+			mNotificationHelper.createNotification();
+			
+		
+
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			
+			Download(file_name, "http://antolabs.com/animation-video.mp4");
+
+		
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			
+			if(dialog.isShowing())
+			{
+			dialog.dismiss();
+			}
+
+			// downloading notification complete
+			mNotificationHelper.completed();
+
+			// Prepare intent which is triggered if the
+			// notification is selected
+
+			Intent toLaunch = new Intent();
+			toLaunch.setAction(android.content.Intent.ACTION_VIEW);
+		//	toLaunch.setDataAndType(Uri.fromFile(new File(file_path)), MimeTypeMap.getSingleton().getMimeTypeFromExtension("pdf")); // you can also change jpeg to other types
+			PendingIntent contentIntent = PendingIntent.getActivity(activity,0, toLaunch, 0);
+
+			mNotifyManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+			mBuilder = new NotificationCompat.Builder(activity);
+			mBuilder.setContentTitle("Android Videos")
+					.setContentText("SDcard/"+ "Download/"+file_name)
+					.setSmallIcon(R.drawable.ic_launcher)
+					.setContentIntent(contentIntent)
+					.setAutoCancel(true);
+			mBuilder.setProgress(0, 0, false);
+			mNotifyManager.notify(id, mBuilder.build());
+			
+
+			
+			
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(file_path));
+			intent.setDataAndType(Uri.parse(file_path), "video/mp4");
+			startActivity(intent);
+			
+
+
+
+		}
+
+	}
+
+	// download operation
+	public void Download(String file_name, String location) {
+		try {
+			URL url = new URL(location);
+
+			// create the new connection
+
+			HttpURLConnection urlConnection = (HttpURLConnection) url
+					.openConnection();
+
+			// set up some things on the connection
+
+			urlConnection.setRequestMethod("GET");
+
+			urlConnection.setDoOutput(true);
+
+			// and connect!
+
+			urlConnection.connect();
+
+			// set the path where we want to save the file
+
+			// in this case, going to save it on the root directory of the
+
+			// sd card.
+
+			File SDCardRoot = new File("/sdcard/" + "Download/");
+
+			// create a new file, specifying the path, and the filename
+
+			// which we want to save the file as.
+
+			File file = new File(SDCardRoot, "Android Videos"
+					+ file_name + ".mp4");
+
+			// this will be used to write the downloaded data into the file we
+			// created
+
+			FileOutputStream fileOutput = new FileOutputStream(file);
+
+			// this will be used in reading the data from the internet
+
+			InputStream inputStream = urlConnection.getInputStream();
+
+			// this is the total size of the file
+
+			int totalSize = urlConnection.getContentLength();
+
+			// variable to store total downloaded bytes
+
+			int downloadedSize = 0;
+
+			// create a buffer...
+
+			byte[] buffer = new byte[1024];
+
+			int bufferLength = 0; // used to store a temporary size of the
+									// buffer
+
+			// now, read through the input buffer and write the contents to the
+			// file
+
+			while ((bufferLength = inputStream.read(buffer)) > 0)
+
+			{
+
+				// add the data in the buffer to the file in the file output
+				// stream (the file on the sd card
+
+				fileOutput.write(buffer, 0, bufferLength);
+
+				// add up the size so we know how much is downloaded
+
+				downloadedSize += bufferLength;
+
+				int progress = (int) (downloadedSize * 100 / totalSize);
+
+				// for notification download percent
+
+				mNotificationHelper.progressUpdate(progress);
+
+				// this is where you would do something to report the prgress,
+				// like this maybe
+
+				// updateProgress(downloadedSize, totalSize);
+
+			}
+
+			// close the output stream when done
+
+			fileOutput.close();
+			// catch some possible errors...
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
+
 }
+
+	
+
+
