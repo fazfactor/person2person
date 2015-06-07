@@ -12,52 +12,62 @@
         android:textColor="#000"
         android:textSize="18sp" />
 
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/relativeLayout1"
+        android:layout_alignParentLeft="true"
+        android:background="#eef2f5"
+        android:fastScrollEnabled="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:smoothScrollbar="true" >
+    </ListView>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:background="#00ff00"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_gravity="center_horizontal" >
-        
-     
+        android:orientation="horizontal" >
 
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
-            android:background="#ff0000"/>
-        
-           <RelativeLayout 
-               android:layout_width="151dp"
-               android:layout_height="fill_parent"
-               android:background="#0000ff">
-               
-           </RelativeLayout>
-           
-            <ImageView
+            android:background="#ff0000" />
+
+        <RelativeLayout
+            android:layout_width="141dp"
+            android:layout_height="fill_parent"
+            android:background="#0000ff" >
+        </RelativeLayout>
+
+        <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:background="#ff0000"/>
-            
-             <ImageView
+            android:background="#ff0000" />
+
+        <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:background="#0000ff"/>
-             
-              <ImageView
+            android:background="#0000ff" />
+
+        <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:background="#ff0000"/>
-              
-               <ImageView
+            android:background="#ff0000" />
+
+        <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:background="#0000ff"/>
+            android:background="#0000ff" />
     </LinearLayout>
 
 </LinearLayout>

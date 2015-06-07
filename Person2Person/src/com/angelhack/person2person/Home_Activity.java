@@ -204,6 +204,8 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 					// TODO Auto-generated method stub
 					
 				
+					Intent intent = new Intent(Home_Activity.this,FriendList_Activity.class);
+	    			startActivity(intent);
 					
 					
 				}

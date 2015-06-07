@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="66dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/profile_iv_id"
+            android:layout_width="70dp"
+            android:layout_height="55dp"
+            android:layout_alignParentLeft="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_profile" />
+
+        <RelativeLayout
+            android:layout_width="141dp"
+            android:layout_height="fill_parent"
+            android:gravity="center|left" >
+
+            <TextView
+                android:id="@+id/name_tv_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:padding="3dp"
+                android:text="Name"
+                android:textColor="#000"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/telephone_tv_id"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_phone" />
+
+        <ImageView
+            android:id="@+id/message_tv_id"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="3dp"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_message" />
+
+        <ImageView
+            android:id="@+id/email_tv_id"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_email" />
+
+        <ImageView
+            android:id="@+id/whatsapp_tv_id"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_whatsapp" />
+    </LinearLayout>
+
+</LinearLayout>

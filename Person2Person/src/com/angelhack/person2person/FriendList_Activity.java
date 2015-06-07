@@ -5,6 +5,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -12,12 +13,21 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 public class FriendList_Activity extends SherlockFragmentActivity {
+	
+	
+	ListView list;
+	
+	String Name[] = {"Amal Dev S I","Anto Jose","Rahul Harikumar","Rohan Harikumar","Jerry Mathew"};
+	String E_mail[]={"amaldevsi@gmail.com","rahulharikr@gmail.com","antojose.th@gmail.com","rohanharikumar80@gmail.com","studiojerryco@gmail.com"};
+	String Phone[]={"9746567542","8089325286","995113870","9497268220","9876543210"};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.home_activity);
+		setContentView(R.layout.friendlist_activity);
+		
+		 list=(ListView) findViewById(R.id.listView1);
 		
 
 		// custom action bar layout
@@ -45,6 +55,14 @@ public class FriendList_Activity extends SherlockFragmentActivity {
 
 			}
 		});
+		
+		
+		
+		com.angelhack.person2person.Friend_Listview_Adapter adapter = new com.angelhack.person2person.Friend_Listview_Adapter(FriendList_Activity.this,Name,E_mail,Phone);
+		list.setAdapter(adapter);
+		
+		
+		
 		
 	}
 

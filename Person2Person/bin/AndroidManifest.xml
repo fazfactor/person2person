@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -36,8 +37,12 @@
         </activity>
         <activity android:name="Home_Activity" >
         </activity>
-        <activity android:name="Socialmedia_Activity"></activity>
-        <activity android:name="SocialMedia_New"></activity>
+        <activity android:name="Socialmedia_Activity" >
+        </activity>
+        <activity android:name="SocialMedia_New" >
+        </activity>
+        <activity android:name="FriendList_Activity" >
+        </activity>
     </application>
 
 </manifest>
