@@ -16,6 +16,6 @@
     
      <string name="dialog_tittle"> Would you like to check whether some one you know has already downloaded this file ? </string>
     <string name="dialog_yes">  Yes Please..! </string>
-      <string name="dialog_no">   No thanks, just download this fresh..! </string>
+      <string name="dialog_no">   No thanks..! </string>
 
 </resources>

@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center" >
+
+    <ScrollView
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <RelativeLayout
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:background="@color/community_color" >
+
+            <TextView
+                android:id="@+id/content_tv_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="P2PSocial"
+                android:textColor="#ffffff"
+                android:textSize="18dip" />
+
+            <RelativeLayout
+                android:id="@+id/image_rl_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/content_tv_id"
+                android:gravity="center_horizontal" >
+
+                <ImageView
+                    android:id="@+id/image_id"
+                    android:layout_width="100dp"
+                    android:layout_height="110dp"
+                    android:gravity="center"
+                    android:scaleType="fitCenter" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/line_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_rl_id"
+                android:background="@drawable/home_line"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:id="@+id/ok_tv_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_id"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Ok"
+                android:textColor="#ffffff"
+                android:textSize="18dip" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

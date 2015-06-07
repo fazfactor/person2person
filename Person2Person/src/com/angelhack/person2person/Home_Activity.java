@@ -200,8 +200,7 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
 
-			// Create the notification in the statusbar
-			mNotificationHelper.createNotification();
+			
 			
 			final Dialog alert_dialog=new Dialog(Home_Activity.this);
 			alert_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -216,17 +215,35 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 
 			
 			content.setText(Home_Activity.this.getResources().getString(R.string.dialog_tittle));
-
-			content.setText(Home_Activity.this.getResources().getString(R.string.dialog_yes));
-
-			content.setText(Home_Activity.this.getResources().getString(R.string.dialog_no));
+			yes.setText(Home_Activity.this.getResources().getString(R.string.dialog_yes));
+			no.setText(Home_Activity.this.getResources().getString(R.string.dialog_no));
+			
+			yes.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					
+					// Create the notification in the statusbar
+					mNotificationHelper.createNotification();
+					
+					
+				}
+			});
+			
+			
+			no.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					
+					finish();
+					
+				}
+			});
 			   
-		   
-			
-			
-			
-			
-		
+	
 
 		}
 
