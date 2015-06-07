@@ -167,6 +167,7 @@ public class Friend_Listview_Adapter extends ArrayAdapter<String> {
 	         //   intentsms.putExtra( "sms_body", "Test text..." );
 	            activity.startActivity( intentsms );
 		
+	            //msg sent
 			}
 		});
 
