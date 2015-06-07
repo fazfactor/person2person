@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Person2Person</string>
+    <string name="app_name">P2PSOCIAL</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
@@ -18,5 +18,5 @@
     <string name="dialog_yes">  Yes Please..! </string>
       <string name="dialog_no">   No thanks..! </string>
 
-         <string name="friend_dialog">  Lucky You..! The Following People in your Contacts have Downloaded this File Before  </string>
+         <string name="friend_dialog">  Lucky You..! The following people in your contacts have downloaded this file before  </string>
 </resources>

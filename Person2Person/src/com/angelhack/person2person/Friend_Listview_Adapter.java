@@ -163,7 +163,7 @@ public class Friend_Listview_Adapter extends ArrayAdapter<String> {
 			public void onClick(View arg0) {
 		// TODO Auto-generated method stub
 				
-				Intent intentsms = new Intent( Intent.ACTION_VIEW, Uri.parse( "sms:" + "" ) );
+				Intent intentsms = new Intent( Intent.ACTION_VIEW, Uri.parse( "sms:" + Phone[position] ) );
 	         //   intentsms.putExtra( "sms_body", "Test text..." );
 	            activity.startActivity( intentsms );
 		
