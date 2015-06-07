@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -202,6 +203,29 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 			// Create the notification in the statusbar
 			mNotificationHelper.createNotification();
 			
+			final Dialog alert_dialog=new Dialog(Home_Activity.this);
+			alert_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			alert_dialog.setContentView(R.layout.dialog_exit);
+			alert_dialog.setCanceledOnTouchOutside(false);
+			alert_dialog.show();
+			
+			
+			TextView content=(TextView) alert_dialog.findViewById(R.id.tittle_tv_id);
+			TextView yes=(TextView) alert_dialog.findViewById(R.id.yes_tv_id);
+			TextView no=(TextView) alert_dialog.findViewById(R.id.no_tv_id);
+
+			
+			content.setText(Home_Activity.this.getResources().getString(R.string.dialog_tittle));
+
+			content.setText(Home_Activity.this.getResources().getString(R.string.dialog_yes));
+
+			content.setText(Home_Activity.this.getResources().getString(R.string.dialog_no));
+			   
+		   
+			
+			
+			
+			
 		
 
 		}
@@ -232,7 +256,7 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 
 			Intent toLaunch = new Intent();
 			toLaunch.setAction(android.content.Intent.ACTION_VIEW);
-		//	toLaunch.setDataAndType(Uri.fromFile(new File(file_path)), MimeTypeMap.getSingleton().getMimeTypeFromExtension("pdf")); // you can also change jpeg to other types
+			toLaunch.setDataAndType(Uri.fromFile(new File(file_path)), MimeTypeMap.getSingleton().getMimeTypeFromExtension("video/mp4")); // you can also change jpeg to other types
 			PendingIntent contentIntent = PendingIntent.getActivity(activity,0, toLaunch, 0);
 
 			mNotifyManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -248,9 +272,6 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 
 			
 			
-			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(file_path));
-			intent.setDataAndType(Uri.parse(file_path), "video/mp4");
-			startActivity(intent);
 			
 
 
