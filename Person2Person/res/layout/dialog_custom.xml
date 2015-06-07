@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="marquee"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:text="P2PSocial"
                 android:textColor="#ffffff"
                 android:textSize="18dip" />
@@ -33,7 +33,7 @@
 
                 <ImageView
                     android:id="@+id/image_id"
-                    android:layout_width="100dp"
+                    android:layout_width="111dp"
                     android:layout_height="110dp"
                     android:gravity="center"
                     android:scaleType="fitCenter" />

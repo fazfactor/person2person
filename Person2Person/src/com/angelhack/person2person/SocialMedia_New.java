@@ -4,17 +4,23 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.angelhack.person2person.helperclass.Utils;
 import com.google.android.gms.auth.GoogleAuthUtil;
 
-public class SocialMedia_New extends Activity {
+public class SocialMedia_New extends SherlockFragmentActivity {
 	
 	ImageView Signin_Gmail,
 	  Signup_Facebook;
@@ -26,8 +32,8 @@ public class SocialMedia_New extends Activity {
 	    private static final String SCOPE = "oauth2:https://www.googleapis.com/auth/userinfo.profile";
 	    
 	    public static String textName,userImageUrl;
-	    public static ImageView imageProfile;
-	    public static TextView textViewName;
+
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +42,36 @@ public class SocialMedia_New extends Activity {
 		
 		setContentView(R.layout.socialmedia_new);
 		
-		Signin_Gmail=(ImageView) findViewById(R.id.signin_gmail_iv_id);
-		imageProfile = (ImageView) findViewById(R.id.imageView1);
-		textViewName = (TextView) findViewById(R.id.textViewNameValue);
 		
+		// custom action bar layout
+		
+				ActionBar bar = getSupportActionBar();
+				getSupportActionBar().setDisplayOptions(bar.DISPLAY_SHOW_CUSTOM);
+				getSupportActionBar().setCustomView(R.layout.actionbar_homepage);
+				bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
+				
+				TextView title_head=(TextView)findViewById(R.id.content_title);
+			    title_head.setText("PERSON 2 PERSON");
+			    
+			 //   title_head.setTypeface(Roboto_bold,Typeface.BOLD);
+
+				// back action
+				RelativeLayout action_back = (RelativeLayout) findViewById(R.id.back_button);
+				action_back.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+					//	finish();
+						
+					//	overridePendingTransition(R.anim.your_left_to_right, R.anim.your_right_to_left);
+
+					}
+				});
+		
+		Signin_Gmail=(ImageView) findViewById(R.id.signin_gmail_iv_id);
+		Signup_Facebook=(ImageView) findViewById(R.id.signup_facebook_iv_id);
+
 		
 		  
 
@@ -51,6 +83,25 @@ public class SocialMedia_New extends Activity {
 				// TODO Auto-generated method stub
 				
 				  syncGoogleAccount();
+				
+			}
+		});
+		
+
+		Signup_Facebook.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				
+				Toast.makeText(SocialMedia_New.this, "Under Construction...!", Toast.LENGTH_SHORT).show();
+				
+				
+
+            	Intent intent = new Intent(SocialMedia_New.this,Home_Activity.class);
+    			startActivity(intent);
+        		
+        		finish();
 				
 			}
 		});

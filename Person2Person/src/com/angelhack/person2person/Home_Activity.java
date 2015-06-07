@@ -42,8 +42,7 @@ import android.widget.TextView;
 public class Home_Activity extends  SherlockFragmentActivity {
 	
 	Typeface Roboto_bold,Roboto_light;
-	ImageView Signin_Gmail,
-			  Signup_Facebook;
+
 	
 	Button download;
 	
@@ -96,31 +95,11 @@ public class Home_Activity extends  SherlockFragmentActivity {
 		
 		
 		
-		Signin_Gmail=(ImageView) findViewById(R.id.signin_gmail_iv_id);
-		Signup_Facebook=(ImageView) findViewById(R.id.signup_facebbok_iv_id);
+	
 		download=(Button) findViewById(R.id.readmore_bt_id);
 		
 		mNotificationHelper = new NotificationHelper(Home_Activity.this);
 		
-		
-		Signin_Gmail.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-		
-		Signup_Facebook.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
 		
 		download.setOnClickListener(new OnClickListener() {
 			
@@ -155,7 +134,7 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 			
 			dialog = new ProgressDialog(activity, R.style.StyledDialog);
 	        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-	        dialog.setMessage(" Downloading in Progress, Please Wait....");
+	        dialog.setMessage(" Fetching Informations, Please Wait....");
 	        dialog.setIndeterminate(true);
 	        dialog.setCanceledOnTouchOutside(false);
 	        dialog.show();
@@ -224,8 +203,7 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
 					
-					// Create the notification in the statusbar
-					mNotificationHelper.createNotification();
+				
 					
 					
 				}
@@ -238,6 +216,9 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
 					
+					
+					// Create the notification in the statusbar
+					mNotificationHelper.createNotification();
 					finish();
 					
 				}
@@ -262,11 +243,13 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 			
 			if(dialog.isShowing())
 			{
+				
+
+				// downloading notification complete
+				mNotificationHelper.completed();
 			dialog.dismiss();
 			}
 
-			// downloading notification complete
-			mNotificationHelper.completed();
 
 			// Prepare intent which is triggered if the
 			// notification is selected

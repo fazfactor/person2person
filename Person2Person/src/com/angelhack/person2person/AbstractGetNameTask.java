@@ -28,6 +28,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -52,6 +53,7 @@ public abstract class AbstractGetNameTask extends AsyncTask<Void, Void, Void> {
 	protected String mScope;
 	protected String mEmail;
 	protected int mRequestCode;
+	ProgressDialog dialog;
 	
 	ImageView profile;
 
@@ -59,6 +61,20 @@ public abstract class AbstractGetNameTask extends AsyncTask<Void, Void, Void> {
 		this.mActivity = activity;
 		this.mScope = scope;
 		this.mEmail = email;
+	}
+	
+	
+	@Override
+	protected void onPreExecute() {
+		// TODO Auto-generated method stub
+		super.onPreExecute();
+		
+		dialog = new ProgressDialog(mActivity, R.style.StyledDialog);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage(" Downloading in Progress, Please Wait....");
+        dialog.setIndeterminate(true);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
 	}
 
 	@Override
@@ -164,6 +180,8 @@ public abstract class AbstractGetNameTask extends AsyncTask<Void, Void, Void> {
 			}
 			
 			
+			
+			dialog.dismiss();
 			
 			final Dialog alert_dialog=new Dialog(mActivity);
     		alert_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -70,6 +70,15 @@ public class NotificationHelper {
      */
     public void completed()    {
         //remove the notification from the status bar
-        mNotificationManager.cancel(NOTIFICATION_ID);
+    	
+    	
+        try {
+        	
+			mNotificationManager.cancel(NOTIFICATION_ID);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
