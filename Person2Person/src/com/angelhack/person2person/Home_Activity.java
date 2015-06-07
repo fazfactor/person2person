@@ -75,7 +75,7 @@ public class Home_Activity extends  SherlockFragmentActivity {
 		bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 		
 		TextView title_head=(TextView)findViewById(R.id.content_title);
-	    title_head.setText("PERSON 2 PERSON");
+	    title_head.setText("P2PSOCIAL");
 	    
 	 //   title_head.setTypeface(Roboto_bold,Typeface.BOLD);
 
@@ -134,7 +134,7 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 			
 			dialog = new ProgressDialog(activity, R.style.StyledDialog);
 	        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-	        dialog.setMessage(" Fetching Informations, Please Wait....");
+	        dialog.setMessage(" Downloading Contents , Please Wait....");
 	        dialog.setIndeterminate(true);
 	        dialog.setCanceledOnTouchOutside(false);
 	        dialog.show();
@@ -206,6 +206,8 @@ public class Getvideo extends AsyncTask<Void, Integer, Void> {
 				
 					Intent intent = new Intent(Home_Activity.this,FriendList_Activity.class);
 	    			startActivity(intent);
+	    			
+	    			overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 					
 					
 				}

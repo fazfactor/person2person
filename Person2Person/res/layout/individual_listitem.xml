@@ -40,7 +40,6 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:padding="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_phone" />
 
@@ -49,8 +48,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="3dp"
-            android:padding="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_message" />
 
@@ -59,7 +58,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:padding="5dp"
+            android:layout_marginLeft="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_email" />
 
@@ -68,7 +67,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentLeft="true"
-            android:padding="5dp"
+            android:layout_marginLeft="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_whatsapp" />
     </LinearLayout>

@@ -51,7 +51,7 @@ public class SocialMedia_New extends SherlockFragmentActivity {
 				bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 				
 				TextView title_head=(TextView)findViewById(R.id.content_title);
-			    title_head.setText("PERSON 2 PERSON");
+			    title_head.setText("P2P SOCIAL");
 			    
 			 //   title_head.setTypeface(Roboto_bold,Typeface.BOLD);
 
@@ -100,6 +100,8 @@ public class SocialMedia_New extends SherlockFragmentActivity {
 
             	Intent intent = new Intent(SocialMedia_New.this,Home_Activity.class);
     			startActivity(intent);
+    			
+    			overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         		
         		finish();
 				

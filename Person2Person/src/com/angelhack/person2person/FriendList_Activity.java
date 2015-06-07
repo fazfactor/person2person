@@ -38,7 +38,7 @@ public class FriendList_Activity extends SherlockFragmentActivity {
 		bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 		
 		TextView title_head=(TextView)findViewById(R.id.content_title);
-	    title_head.setText("PERSON 2 PERSON");
+	    title_head.setText("P2PSOCIAL");
 	    
 	 //   title_head.setTypeface(Roboto_bold,Typeface.BOLD);
 

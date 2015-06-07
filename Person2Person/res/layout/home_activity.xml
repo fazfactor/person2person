@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
-    android:gravity="center_vertical"
+    android:background="@drawable/splashscreen"
     android:orientation="vertical"
     android:padding="20dp" >
 
@@ -11,11 +10,11 @@
         android:id="@+id/readmore_bt_id"
         android:layout_width="fill_parent"
         android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/rounded_submit_button"
-        android:gravity="center"
         android:text="Download From Here"
         android:textColor="#ffffff"
         android:textSize="22dp"
         android:textStyle="bold" />
 
-</LinearLayout>
+</RelativeLayout>

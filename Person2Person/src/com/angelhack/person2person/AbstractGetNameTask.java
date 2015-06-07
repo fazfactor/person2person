@@ -71,7 +71,7 @@ public abstract class AbstractGetNameTask extends AsyncTask<Void, Void, Void> {
 		
 		dialog = new ProgressDialog(mActivity, R.style.StyledDialog);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setMessage(" Downloading in Progress, Please Wait....");
+        dialog.setMessage(" Connecting with your account , Please Wait....");
         dialog.setIndeterminate(true);
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
@@ -206,6 +206,8 @@ public abstract class AbstractGetNameTask extends AsyncTask<Void, Void, Void> {
 					
 					Intent intent = new Intent(mActivity,Home_Activity.class);
 					mActivity.startActivity(intent);
+					
+					mActivity.overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 					
 					mActivity.finish();
 					

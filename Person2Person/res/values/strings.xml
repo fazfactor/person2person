@@ -18,4 +18,5 @@
     <string name="dialog_yes">  Yes Please..! </string>
       <string name="dialog_no">   No thanks..! </string>
 
+         <string name="friend_dialog">  Lucky You..! The Following People in your Contacts have Downloaded this File Before  </string>
 </resources>

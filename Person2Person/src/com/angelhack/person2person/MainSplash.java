@@ -2,24 +2,16 @@
 
 
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.AnimationDrawable;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.angelhack.person2person.helperclass.Utils;
-import com.google.android.gms.auth.GoogleAuthUtil;
 
 
 public class MainSplash extends Activity {
